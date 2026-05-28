@@ -9,9 +9,9 @@ use App\Models\Admin;
 
 class ProductController extends Controller
 {
-        public function index()
+    public function index()
     {
-        $products = Product::with('images')->where('status', 'available')->get();
+        $products = Product::with('images')->where('status', 'available')->paginate(10);
         return response()->json($products);
     }
 
@@ -21,7 +21,6 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
- 
     public function store(Request $request)
     {
         $request->validate([
@@ -31,12 +30,11 @@ class ProductController extends Controller
             'ukuran' => 'required',
             'harga' => 'required|numeric',
             'kondisi' => 'required',
-            'gambar.*' => 'image|mimes:jpeg,png|max:2048' // Max 2MB
+            'gambar.*' => 'image|mimes:jpeg,png|max:2048'
         ]);
 
         $product = Product::create($request->except('gambar'));
 
-        
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $file) {
                 $path = $file->store('products', 'public');
@@ -50,7 +48,6 @@ class ProductController extends Controller
         return response()->json(['message' => 'Produk berhasil ditambahkan', 'data' => $product], 201);
     }
 
-    
     public function updateStatus(Request $request, $id)
     {
         $request->validate(['status' => 'required|in:available,reserved,sold']);
@@ -60,7 +57,7 @@ class ProductController extends Controller
         return response()->json(['message' => "Status diubah menjadi {$request->status}"]);
     }
 
-   
+
     public function checkout($id)
     {
         $product = Product::findOrFail($id);

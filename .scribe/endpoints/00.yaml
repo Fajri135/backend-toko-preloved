@@ -1,0 +1,380 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/products
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"current_page":1,"data":[{"id":1,"kategori":"Cardigan","nama_produk":"Baju Preloved dolore","deskripsi":"Dolorum velit eum aliquid vero id non voluptas assumenda ab perspiciatis maxime est.","ukuran":"XL","warna":"fuchsia","harga":"188740.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":2,"kategori":"Sweater","nama_produk":"Baju Preloved enim","deskripsi":"Possimus et amet corrupti quos expedita quo sed et.","ukuran":"M","warna":"white","harga":"80348.00","kondisi":"Like New","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":3,"kategori":"T-Shirt","nama_produk":"Baju Preloved maxime","deskripsi":"Et suscipit sequi dolorem nisi quia expedita nostrum.","ukuran":"L","warna":"teal","harga":"152131.00","kondisi":"Like New","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":4,"kategori":"Tank Top","nama_produk":"Baju Preloved accusantium","deskripsi":"Et repellendus et quo dicta enim eos autem culpa nemo.","ukuran":"All Size","warna":"black","harga":"237653.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":5,"kategori":"T-Shirt","nama_produk":"Baju Preloved deleniti","deskripsi":"Deleniti amet sequi dolorem culpa officia iste asperiores unde nihil corrupti nemo tempora.","ukuran":"XXL","warna":"olive","harga":"211919.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":6,"kategori":"Jaket","nama_produk":"Baju Preloved vero","deskripsi":"Voluptatum rem eaque voluptatem architecto mollitia dolorem quia ipsam omnis tenetur est.","ukuran":"M","warna":"yellow","harga":"190029.00","kondisi":"Fair","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":7,"kategori":"Jaket","nama_produk":"Baju Preloved eum","deskripsi":"Rem tempora mollitia debitis molestiae eum sit delectus perferendis non autem.","ukuran":"L","warna":"green","harga":"150130.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":8,"kategori":"Kemeja","nama_produk":"Baju Preloved est","deskripsi":"Est dolore officiis officia suscipit porro necessitatibus omnis reprehenderit.","ukuran":"XL","warna":"olive","harga":"160392.00","kondisi":"Like New","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":9,"kategori":"Sweater","nama_produk":"Baju Preloved doloremque","deskripsi":"Cum id nam nesciunt repellat aliquam consequuntur rerum dolor.","ukuran":"XL","warna":"yellow","harga":"112828.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]},{"id":10,"kategori":"Tank Top","nama_produk":"Baju Preloved culpa","deskripsi":"Sit nihil reiciendis aut repudiandae distinctio maxime commodi ipsum voluptas at.","ukuran":"XS","warna":"yellow","harga":"224489.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]}],"first_page_url":"http:\/\/localhost\/api\/products?page=1","from":1,"last_page":2,"last_page_url":"http:\/\/localhost\/api\/products?page=2","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/products?page=1","label":"1","page":1,"active":true},{"url":"http:\/\/localhost\/api\/products?page=2","label":"2","page":2,"active":false},{"url":"http:\/\/localhost\/api\/products?page=2","label":"Next &raquo;","page":2,"active":false}],"next_page_url":"http:\/\/localhost\/api\/products?page=2","path":"http:\/\/localhost\/api\/products","per_page":10,"prev_page_url":null,"to":10,"total":20}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/products/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"id":1,"kategori":"Cardigan","nama_produk":"Baju Preloved dolore","deskripsi":"Dolorum velit eum aliquid vero id non voluptas assumenda ab perspiciatis maxime est.","ukuran":"XL","warna":"fuchsia","harga":"188740.00","kondisi":"Good","catatan_kondisi":"Pemakaian wajar, warna masih pekat.","stok":1,"status":"available","created_at":"2026-05-28T13:03:28.000000Z","updated_at":"2026-05-28T13:03:28.000000Z","images":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/checkout/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the checkout.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Product] architecto"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/admin/login
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        custom: []
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      email: gbailey@example.net
+      password: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/admin/products
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kategori:
+        custom: []
+        name: kategori
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama_produk:
+        custom: []
+        name: nama_produk
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      deskripsi:
+        custom: []
+        name: deskripsi
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ukuran:
+        custom: []
+        name: ukuran
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      harga:
+        custom: []
+        name: harga
+        description: ''
+        required: true
+        example: 4326.41688
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      kondisi:
+        custom: []
+        name: kondisi
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      gambar:
+        custom: []
+        name: gambar
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      kategori: architecto
+      nama_produk: architecto
+      deskripsi: architecto
+      ukuran: architecto
+      harga: 4326.41688
+      kondisi: architecto
+    fileParameters:
+      gambar:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/admin/products/{id}/status'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: true
+        example: available
+        type: string
+        enumValues:
+          - available
+          - reserved
+          - sold
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      status: available
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
