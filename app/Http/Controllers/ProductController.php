@@ -37,10 +37,12 @@ class ProductController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $file) {
+                // Simpan gambar ke folder storage/app/public/products
                 $path = $file->store('products', 'public');
+                
                 ProductImage::create([
                     'product_id' => $product->id,
-                    'gambar' => $path
+                    'url_gambar' => $path // <--- UBAH 'gambar' menjadi 'url_gambar' di sini
                 ]);
             }
         }
