@@ -15,6 +15,43 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+public function home(Request $request)
+{
+    // 1. Ambil daftar warna unik dari database
+    $availableColors = Product::where('status', 'available')
+        ->whereNotNull('warna')
+        ->where('warna', '!=', '')
+        ->distinct()
+        ->pluck('warna')
+        ->sort()
+        ->values();
+
+    // 2. Bangun query filter produk
+    $query = Product::with('images')->where('status', 'available');
+
+    if ($request->filled('kategori')) {
+        $query->where('kategori', $request->kategori);
+    }
+
+    if ($request->filled('ukuran')) {
+        $query->where('ukuran', $request->ukuran);
+    }
+
+    if ($request->filled('warna')) {
+        $query->where('warna', $request->warna);
+    }
+
+    $products = $query->get();
+
+// 3. JIKA REQUEST ADALAH AJAX: Kembalikan file home utama tetapi HANYA bagian fragment 'product_list'
+if ($request->ajax()) {
+    return view('public.home.home', compact('products'))->fragment('product_list');
+}
+
+    // 4. JIKA REQUEST BIASA: Buka halaman seperti biasa
+    return view('public.home.home', compact('products', 'availableColors'));
+}
+
     public function show($id)
     {
         $product = Product::with('images')->findOrFail($id);
@@ -24,12 +61,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kategori' => 'required',
-            'nama_produk' => 'required',
-            'deskripsi' => 'required',
-            'ukuran' => 'required',
+            'kategori' => 'required|in:T-Shirt,Kemeja,Blouse,Crop Top,Hoodie,Sweater,Cardigan,Jaket,Kaos,Tank Top,Tunikan',
+            'nama_produk' => 'required|string|max:150',
+            'deskripsi' => 'required|string',
+            'ukuran' => 'required|in:XS,S,M,L,XL,XXL,All Size',
+            'warna' => 'nullable|string|max:50', 
             'harga' => 'required|numeric',
-            'kondisi' => 'required',
+            'kondisi' => 'required|in:Like New,Good,Fair',
+            'catatan_kondisi' => 'nullable|string', 
             'gambar.*' => 'image|mimes:jpeg,png|max:2048'
         ]);
 
@@ -42,7 +81,7 @@ class ProductController extends Controller
                 
                 ProductImage::create([
                     'product_id' => $product->id,
-                    'url_gambar' => $path // <--- UBAH 'gambar' menjadi 'url_gambar' di sini
+                    'url_gambar' => $path
                 ]);
             }
         }

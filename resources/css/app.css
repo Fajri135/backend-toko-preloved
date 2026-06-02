@@ -1,9 +1,161 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+:root{
+
+/* MAIN COLORS */
+
+--primary:#4E342E;
+
+/* dark brown */
+
+--secondary:#8D6E63;
+
+/* mocha */
+
+--third:#C7B299;
+
+/* warm beige */
+
+--fourth:#E6D5C3;
+
+/* soft cream */
+
+--light:#F5EEE6;
+
+/* background */
+
+--white:#FAF8F5;
+
+/* card */
+
+--accent:#C08A5D;
+
+/* luxury brown accent */
+
+}
+
+
+
+/* BACKGROUND */
+
+.bg-primary{
+
+background-color:var(--primary);
+
+}
+
+.bg-secondary{
+
+background-color:var(--secondary);
+
+}
+
+.bg-third{
+
+background-color:var(--third);
+
+}
+
+.bg-fourth{
+
+background-color:var(--fourth);
+
+}
+
+.bg-light{
+
+background-color:var(--light);
+
+}
+
+
+
+/* TEXT */
+
+.text-primary{
+
+color:var(--primary);
+
+}
+
+.text-secondary{
+
+color:var(--secondary);
+
+}
+
+.text-accent{
+
+color:var(--accent);
+
+}
+
+
+
+/* BORDER */
+
+.border-accent{
+
+border-color:var(--accent);
+
+}
+
+
+
+/* BUTTON */
+
+.btn-accent{
+
+background:var(--accent);
+
+color:white;
+
+transition:.3s;
+
+box-shadow:
+
+0 8px 20px rgba(192,138,93,.25);
+
+}
+
+
+.btn-accent:hover{
+
+transform:
+
+translateY(-2px);
+
+opacity:.95;
+
+}
+
+
+
+/* CARD */
+
+.glass{
+
+backdrop-filter:
+
+blur(10px);
+
+background:
+
+rgba(255,255,255,.7);
+
+box-shadow:
+
+0 10px 30px rgba(
+
+78,
+
+52,
+
+46,
+
+.08
+
+);
+
 }
