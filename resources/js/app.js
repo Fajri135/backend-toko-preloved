@@ -1,23 +1,168 @@
 document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.getElementById("mainNavbar");
+
+    const logoBox = document.getElementById("navbarLogoBox");
+    const logoText = document.getElementById("navbarLogoText");
+    const brandTitle = document.getElementById("navbarBrandTitle");
+    const brandSubtitle = document.getElementById("navbarBrandSubtitle");
+
+    const navHomeLink = document.getElementById("navHomeLink");
+    const navProductLink = document.getElementById("navProductLink");
+    const mobileHomeLink = document.getElementById("mobileHomeLink");
+    const mobileProductLink = document.getElementById("mobileProductLink");
+
+    const loginBtn = document.getElementById("navbarLoginBtn");
+
     const menuBtn = document.getElementById("mobileMenuBtn");
     const menuDrawer = document.getElementById("mobileMenuDrawer");
     const hamburgerIcon = document.getElementById("hamburgerIcon");
-    const mobileLinks = document.querySelectorAll("[data-mobile-link]");
 
-    if (navbar) {
-        window.addEventListener("scroll", function () {
-            if (window.scrollY > 24) {
-                navbar.classList.add("is-scrolled");
-                navbar.classList.remove("bg-transparent");
-                navbar.classList.add("bg-white/90", "shadow-sm");
-            } else {
-                navbar.classList.remove("is-scrolled");
-                navbar.classList.add("bg-transparent");
-                navbar.classList.remove("bg-white/90", "shadow-sm");
+    const stockSection = document.getElementById("stock-section");
+
+    function setTopNavbar() {
+        if (!navbar) return;
+
+        navbar.className =
+            "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#4A6B4A]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_18px_50px_rgba(26,36,26,0.12)]";
+
+        logoBox.className =
+            "w-10 h-10 rounded-lg bg-white border border-white flex items-center justify-center shadow-sm transition-all duration-300 group-hover:-translate-y-0.5";
+
+        logoText.className =
+            "text-[#3A5311] font-black text-lg tracking-tight transition-colors duration-300";
+
+        brandTitle.className =
+            "text-[13px] sm:text-sm font-black tracking-[0.22em] text-white uppercase transition-all duration-300";
+
+        brandSubtitle.className =
+            "mt-1 text-[8px] sm:text-[9px] font-bold tracking-[0.28em] text-white/65 uppercase transition-all duration-300";
+
+        loginBtn.className =
+            "bg-white text-[#3A5311] border border-white px-5 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.16em] hover:bg-[#F4F6F4] transition-all duration-300";
+    }
+
+    function setScrolledNavbar() {
+        if (!navbar) return;
+
+        navbar.className =
+            "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-xl border-b border-[#4A6B4A]/15 shadow-[0_14px_40px_rgba(26,36,26,0.08)]";
+
+        logoBox.className =
+            "w-10 h-10 rounded-lg bg-[#3A5311] border border-[#3A5311] flex items-center justify-center shadow-sm transition-all duration-300 group-hover:-translate-y-0.5";
+
+        logoText.className =
+            "text-white font-black text-lg tracking-tight transition-colors duration-300";
+
+        brandTitle.className =
+            "text-[13px] sm:text-sm font-black tracking-[0.22em] text-[#3A5311] uppercase transition-all duration-300";
+
+        brandSubtitle.className =
+            "mt-1 text-[8px] sm:text-[9px] font-bold tracking-[0.28em] text-[#4A6B4A]/70 uppercase transition-all duration-300";
+
+        loginBtn.className =
+            "bg-[#3A5311] text-white border border-[#3A5311] px-5 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.16em] hover:bg-[#4A6B4A] transition-all duration-300";
+    }
+
+    function setActiveMenu(section) {
+        const isProduct = section === "product";
+        const isScrolled = window.scrollY > 35;
+
+        if (!navHomeLink || !navProductLink) return;
+
+        if (!isScrolled) {
+            navHomeLink.className = isProduct
+                ? "js-scroll-link px-5 py-3 rounded-lg text-white/80 border border-transparent hover:text-white hover:bg-white/10 transition-all duration-300"
+                : "js-scroll-link px-5 py-3 rounded-lg bg-white text-[#3A5311] border border-white shadow-sm transition-all duration-300";
+
+            navProductLink.className = isProduct
+                ? "js-scroll-link px-5 py-3 rounded-lg bg-white text-[#3A5311] border border-white shadow-sm transition-all duration-300"
+                : "js-scroll-link px-5 py-3 rounded-lg text-white/80 border border-transparent hover:text-white hover:bg-white/10 transition-all duration-300";
+        } else {
+            navHomeLink.className = isProduct
+                ? "js-scroll-link px-5 py-3 rounded-lg text-[#3A5311] border border-transparent hover:bg-[#F4F6F4] transition-all duration-300"
+                : "js-scroll-link px-5 py-3 rounded-lg bg-[#3A5311] text-white border border-[#3A5311] shadow-sm transition-all duration-300";
+
+            navProductLink.className = isProduct
+                ? "js-scroll-link px-5 py-3 rounded-lg bg-[#3A5311] text-white border border-[#3A5311] shadow-sm transition-all duration-300"
+                : "js-scroll-link px-5 py-3 rounded-lg text-[#3A5311] border border-transparent hover:bg-[#F4F6F4] transition-all duration-300";
+        }
+
+        if (mobileHomeLink && mobileProductLink) {
+            mobileHomeLink.className = isProduct
+                ? "js-scroll-link block px-4 py-4 rounded-lg text-xs font-black uppercase tracking-[0.16em] text-[#3A5311] hover:bg-[#F4F6F4] transition-all"
+                : "js-scroll-link block px-4 py-4 rounded-lg text-xs font-black uppercase tracking-[0.16em] text-white bg-[#3A5311] transition-all";
+
+            mobileProductLink.className = isProduct
+                ? "js-scroll-link block px-4 py-4 rounded-lg text-xs font-black uppercase tracking-[0.16em] text-white bg-[#3A5311] transition-all"
+                : "js-scroll-link block px-4 py-4 rounded-lg text-xs font-black uppercase tracking-[0.16em] text-[#3A5311] hover:bg-[#F4F6F4] transition-all";
+        }
+    }
+
+    function updateNavbarState() {
+        const isScrolled = window.scrollY > 35;
+
+        if (isScrolled) {
+            setScrolledNavbar();
+        } else {
+            setTopNavbar();
+        }
+
+        if (!stockSection) {
+            setActiveMenu("home");
+            return;
+        }
+
+        const stockTop = stockSection.getBoundingClientRect().top;
+
+        if (stockTop <= 120) {
+            setActiveMenu("product");
+        } else {
+            setActiveMenu("home");
+        }
+    }
+
+    function scrollToTarget(targetId) {
+        if (targetId === "home-section") {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+
+            setTimeout(updateNavbarState, 500);
+            return;
+        }
+
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const offset = 86;
+        const targetPosition =
+            target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+        });
+
+        setTimeout(updateNavbarState, 500);
+    }
+
+    document.querySelectorAll(".js-scroll-link").forEach((link) => {
+        link.addEventListener("click", function (event) {
+            const href = this.getAttribute("href");
+
+            if (!href || !href.startsWith("#")) return;
+
+            event.preventDefault();
+
+            const targetId = href.replace("#", "");
+            scrollToTarget(targetId);
+
+            if (menuDrawer && !menuDrawer.classList.contains("hidden")) {
+                toggleMenu();
             }
         });
-    }
+    });
 
     function toggleMenu() {
         if (!menuBtn || !menuDrawer || !hamburgerIcon) return;
@@ -26,10 +171,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isHidden) {
             menuDrawer.classList.remove("hidden");
+
             setTimeout(() => {
                 menuDrawer.classList.remove("opacity-0", "-translate-y-3");
                 menuDrawer.classList.add("opacity-100", "translate-y-0");
             }, 10);
+
             hamburgerIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
         } else {
             menuDrawer.classList.remove("opacity-100", "translate-y-0");
@@ -47,98 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         menuBtn.addEventListener("click", toggleMenu);
     }
 
-    mobileLinks.forEach((link) => {
-        link.addEventListener("click", function () {
-            if (menuDrawer && !menuDrawer.classList.contains("hidden")) {
-                toggleMenu();
-            }
-        });
-    });
-
-    const filterForm = document.getElementById("filterForm");
-    const autoFilters = document.querySelectorAll(".auto-filter");
-    const productContainer = document.getElementById("productContainer");
-    const resetButtonContainer = document.getElementById("resetButtonContainer");
-
-    function updateResetButtonVisibility() {
-        if (!resetButtonContainer || !autoFilters.length) return;
-
-        let isAnyFilterActive = false;
-
-        autoFilters.forEach((select) => {
-            if (select.value !== "") isAnyFilterActive = true;
-        });
-
-        if (isAnyFilterActive) {
-            resetButtonContainer.innerHTML = `
-                <button type="button" id="clearFiltersBtn" class="w-full border border-[rgba(26,36,26,0.16)] bg-white text-[#1A241A] py-3.5 px-4 rounded-lg text-[11px] font-black tracking-[0.16em] uppercase hover:bg-[#F4F6F4] transition-all flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18"></path>
-                    </svg>
-                    Clear Filters
-                </button>
-            `;
-        } else {
-            resetButtonContainer.innerHTML = `
-                <div class="hidden lg:flex items-center justify-end gap-2 text-[11px] text-[#687568] font-bold tracking-[0.14em] uppercase pb-3">
-                    <span class="w-2 h-2 rounded-full bg-[#4A6B4A]"></span>
-                    Auto Filtering
-                </div>
-            `;
-        }
-    }
-
-    function applyFilter() {
-        if (!filterForm || !productContainer) return;
-
-        productContainer.style.opacity = "0.45";
-        productContainer.style.transform = "translateY(4px)";
-
-        const formData = new FormData(filterForm);
-        const queryParams = new URLSearchParams(formData).toString();
-        const requestUrl = `${filterForm.action}?${queryParams}`;
-
-        fetch(requestUrl, {
-            headers: {
-                "X-Requested-With": "XMLHttpRequest",
-            },
-        })
-            .then((response) => response.text())
-            .then((htmlContent) => {
-                productContainer.innerHTML = htmlContent;
-                productContainer.style.opacity = "1";
-                productContainer.style.transform = "translateY(0)";
-                updateResetButtonVisibility();
-                window.history.pushState({}, "", requestUrl);
-            })
-            .catch((error) => {
-                console.error("Gagal memuat produk via AJAX:", error);
-                productContainer.style.opacity = "1";
-                productContainer.style.transform = "translateY(0)";
-            });
-    }
-
-    if (autoFilters.length) {
-        autoFilters.forEach((element) => {
-            element.addEventListener("change", applyFilter);
-        });
-    }
-
-    document.addEventListener("click", function (event) {
-        const clickedReset =
-            event.target.id === "clearFiltersBtn" ||
-            event.target.id === "innerResetBtn" ||
-            event.target.closest("#clearFiltersBtn");
-
-        if (clickedReset && filterForm) {
-            event.preventDefault();
-            filterForm.reset();
-
-            autoFilters.forEach((select) => {
-                select.value = "";
-            });
-
-            applyFilter();
-        }
-    });
+    window.addEventListener("scroll", updateNavbarState);
+    updateNavbarState();
 });

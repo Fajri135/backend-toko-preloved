@@ -2,7 +2,6 @@
     <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div class="h-[72px] flex items-center justify-between">
 
-            {{-- BRAND --}}
             <a href="#home-section" id="brandHomeLink" class="js-scroll-link flex items-center gap-3 group select-none">
                 <div id="navbarLogoBox" class="w-10 h-10 rounded-lg bg-white border border-white flex items-center justify-center shadow-sm transition-all duration-300 group-hover:-translate-y-0.5">
                     <span id="navbarLogoText" class="text-[#3A5311] font-black text-lg tracking-tight transition-colors duration-300">
@@ -20,7 +19,6 @@
                 </div>
             </a>
 
-            {{-- DESKTOP MENU --}}
             <div class="hidden md:flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.18em]">
                 <a id="navHomeLink" href="#home-section" class="js-scroll-link px-5 py-3 rounded-lg bg-white text-[#3A5311] border border-white shadow-sm transition-all duration-300">
                     Home
@@ -31,14 +29,12 @@
                 </a>
             </div>
 
-            {{-- DESKTOP ACTION --}}
             <div class="hidden md:flex items-center gap-3">
                 <a id="navbarLoginBtn" href="/login" class="bg-white text-[#3A5311] border border-white px-5 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.16em] hover:bg-[#F4F6F4] transition-all duration-300">
                     Admin Login
                 </a>
             </div>
 
-            {{-- MOBILE BUTTON --}}
             <button id="mobileMenuBtn" type="button" class="md:hidden w-10 h-10 rounded-lg bg-white text-[#3A5311] border border-white flex items-center justify-center" aria-label="Toggle Menu">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"></path>
@@ -48,7 +44,6 @@
         </div>
     </div>
 
-    {{-- MOBILE DRAWER --}}
     <div id="mobileMenuDrawer" class="hidden md:hidden absolute top-20 left-5 right-5 bg-white/95 backdrop-blur-xl rounded-xl border border-[rgba(26,36,26,0.10)] shadow-[0_24px_70px_rgba(26,36,26,0.16)] opacity-0 transform -translate-y-3 transition-all duration-300 overflow-hidden">
         <div class="p-3">
             <a id="mobileHomeLink" href="#home-section" data-mobile-link class="js-scroll-link block px-4 py-4 rounded-lg text-xs font-black uppercase tracking-[0.16em] text-white bg-[#3A5311] transition-all">

@@ -1,4 +1,4 @@
-<section class="relative min-h-screen flex items-center overflow-hidden bg-[#4A6B4A]">
+<section id="home-section" class="relative min-h-screen flex items-center overflow-hidden bg-[#4A6B4A]">
     <div class="absolute inset-0 subtle-grid opacity-55 pointer-events-none"></div>
 
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.14),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(255,255,255,0.10),transparent_28%)] pointer-events-none"></div>
@@ -28,12 +28,8 @@
                     </p>
 
                     <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
-                        <a href="#stock-section" class="bg-white text-[#1A241A] border border-white rounded-lg px-6 py-3.5 text-[10px] font-black tracking-[0.16em] uppercase text-center hover:bg-[#F4F6F4] transition-all hover:-translate-y-0.5">
+                        <a href="#stock-section" class="js-scroll-link bg-white text-[#1A241A] border border-white rounded-lg px-6 py-3.5 text-[10px] font-black tracking-[0.16em] uppercase text-center hover:bg-[#F4F6F4] transition-all hover:-translate-y-0.5">
                             Explore Collection
-                        </a>
-
-                        <a href="#stock-section" class="border border-white/45 bg-white/10 text-white backdrop-blur-md rounded-lg px-6 py-3.5 text-[10px] font-black tracking-[0.16em] uppercase text-center hover:bg-white hover:text-[#1A241A] transition-all hover:-translate-y-0.5">
-                            Our Products
                         </a>
                     </div>
 
