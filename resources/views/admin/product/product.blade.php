@@ -14,12 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Animasi kustom untuk skeleton loading */
+
         .shimmer {
             background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
             background-size: 200% 100%;
             animation: loading-shimmer 1.5s infinite;
         }
+
         @keyframes loading-shimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
@@ -31,10 +32,8 @@
 
     @include('admin.components.sidebar')
 
-    <!-- Layout utama disesuaikan margin-nya dengan lebar sidebar modern -->
     <main class="ml-72 min-h-screen p-8 lg:p-12 transition-all duration-300">
 
-        <!-- HEADER SECTION -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-6">
             <div>
                 <h1 class="text-3xl font-extrabold text-primary tracking-tight">
@@ -45,7 +44,6 @@
                 </p>
             </div>
 
-            <!-- Tombol Tambah Produk dengan Icon Minimalis -->
             <a href="/admin/product/create" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-3.5 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-accent hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
@@ -54,7 +52,6 @@
             </a>
         </div>
 
-        <!-- TABLE CARD BLOCK -->
         <div class="bg-white rounded-2xl border border-fourth/40 shadow-[0_10px_30px_rgba(78,52,46,0.02)] overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -69,7 +66,6 @@
                         </tr>
                     </thead>
                     <tbody id="productTable" class="divide-y divide-fourth/30">
-                        <!-- State Awal: Menampilkan Skeleton Loader Berdenyut yang Sangat Premium -->
                         <script>
                             document.write(Array(3).fill().map(() => `
                                 <tr>
@@ -88,9 +84,22 @@
         </div>
     </main>
 
-    <!-- SCRIPT LOGIKA UTAMA -->
     <script>
         const token = localStorage.getItem("token");
+
+        const packageIconSvg = `
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25l-9-5.25-9 5.25m18 0l-9 5.25m9-5.25v7.5l-9 5.25m0-7.5L3 8.25m9 5.25v7.5M3 8.25v7.5l9 5.25"></path>
+            </svg>
+        `;
+
+        const packagePlaceholder = `
+            <div class="w-full h-full flex items-center justify-center bg-[#F4F6F4]">
+                <div class="w-10 h-10 rounded-xl bg-white border border-[#4A6B4A]/10 flex items-center justify-center shadow-sm">
+                    ${packageIconSvg}
+                </div>
+            </div>
+        `;
 
         async function loadProducts() {
             try {
@@ -106,7 +115,9 @@
                         <tr>
                             <td colspan="6" class="p-16 text-center">
                                 <div class="max-w-sm mx-auto">
-                                    <span class="text-3xl">🧥</span>
+                                    <div class="mx-auto w-14 h-14 rounded-2xl bg-[#F4F6F4] border border-[#4A6B4A]/10 flex items-center justify-center shadow-sm">
+                                        ${packageIconSvg}
+                                    </div>
                                     <h3 class="text-sm font-bold text-primary mt-4">Belum Ada Produk</h3>
                                     <p class="text-xs text-secondary/60 mt-1">Katalog item preloved Anda masih kosong. Mulai tambahkan koleksi pertama Anda sekarang.</p>
                                 </div>
@@ -114,20 +125,21 @@
                         </tr>`;
                 } else {
                     products.forEach(product => {
-                        // Jalur URL Gambar
-                        const imgUrl = product.images && product.images.length > 0 
-                            ? `/storage/${product.images[0].url_gambar}` 
-                            : 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=256&auto=format&fit=crop';
-                        
-                        // Format Angka Rupiah
+                        const hasImage = product.images && product.images.length > 0;
+                        const imgUrl = hasImage ? `/storage/${product.images[0].url_gambar}` : null;
+
+                        const imageHtml = hasImage
+                            ? `<img src="${imgUrl}" alt="${product.nama_produk}" class="w-full h-full object-cover">`
+                            : packagePlaceholder;
+
                         const formattedPrice = new Intl.NumberFormat('id-ID', {
                             style: 'currency',
                             currency: 'IDR',
                             minimumFractionDigits: 0
                         }).format(product.harga);
 
-                        // Komponen Status Badge dengan glowing indicator mini
                         let statusBadge = '';
+
                         if (product.status === 'available') {
                             statusBadge = `
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200/50">
@@ -152,7 +164,7 @@
                             <tr class="hover:bg-zinc-50/50 transition-colors duration-200">
                                 <td class="p-5">
                                     <div class="relative w-14 h-14 rounded-xl overflow-hidden border border-fourth/30 bg-light">
-                                        <img src="${imgUrl}" alt="${product.nama_produk}" class="w-full h-full object-cover">
+                                        ${imageHtml}
                                     </div>
                                 </td>
                                 <td class="p-5">
@@ -169,9 +181,8 @@
                                 </td>
                                 <td class="p-5">${statusBadge}</td>
                                 <td class="p-5 text-right">
-                                    <!-- Custom Dropdown Selector -->
                                     <div class="relative inline-block text-left">
-                                        <select 
+                                        <select
                                             onchange="changeStatus(${product.id}, this.value)"
                                             class="w-36 p-2.5 pr-8 rounded-xl border border-fourth/80 bg-white text-xs font-semibold text-primary focus:border-accent focus:ring-4 focus:ring-accent/10 outline-none cursor-pointer appearance-none transition-all duration-200 shadow-sm"
                                         >
@@ -179,9 +190,10 @@
                                             <option value="reserved" ${product.status === 'reserved' ? 'selected' : ''}>Set Reserved</option>
                                             <option value="sold" ${product.status === 'sold' ? 'selected' : ''}>Set Sold Out</option>
                                         </select>
-                                        <!-- Custom Dropdown Down-Arrow Icon -->
                                         <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-secondary/50">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </div>
                                 </td>
@@ -213,9 +225,8 @@
                     body: JSON.stringify({ status })
                 });
 
-                if(!response.ok) throw new Error("Gagal mengupdate status");
-                
-                // Panggil ulang data untuk merefresh visual badge terbaru
+                if (!response.ok) throw new Error("Gagal mengupdate status");
+
                 loadProducts();
             } catch (error) {
                 console.error("Error updating status:", error);
@@ -223,7 +234,6 @@
             }
         }
 
-        // Jalankan fungsi saat DOM terarsip penuh
         loadProducts();
     </script>
 </body>
