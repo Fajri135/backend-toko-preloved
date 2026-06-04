@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    /* =========================
+       PUBLIC NAVBAR
+    ========================= */
     const navbar = document.getElementById("mainNavbar");
 
     const logoBox = document.getElementById("navbarLogoBox");
@@ -119,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateNavbarState() {
+        if (!navbar) return;
+
         const isScrolled = window.scrollY > 35;
 
         if (isScrolled) {
@@ -167,23 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(updateNavbarState, 500);
     }
 
-    document.querySelectorAll(".js-scroll-link").forEach((link) => {
-        link.addEventListener("click", function (event) {
-            const href = this.getAttribute("href");
-
-            if (!href || !href.startsWith("#")) return;
-
-            event.preventDefault();
-
-            const targetId = href.replace("#", "");
-            scrollToTarget(targetId);
-
-            if (menuDrawer && !menuDrawer.classList.contains("hidden")) {
-                toggleMenu();
-            }
-        });
-    });
-
     function toggleMenu() {
         if (!menuBtn || !menuDrawer || !hamburgerIcon) return;
 
@@ -210,13 +198,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    document.querySelectorAll(".js-scroll-link").forEach((link) => {
+        link.addEventListener("click", function (event) {
+            const href = this.getAttribute("href");
+
+            if (!href || !href.startsWith("#")) return;
+
+            event.preventDefault();
+
+            const targetId = href.replace("#", "");
+            scrollToTarget(targetId);
+
+            if (menuDrawer && !menuDrawer.classList.contains("hidden")) {
+                toggleMenu();
+            }
+        });
+    });
+
     if (menuBtn) {
         menuBtn.addEventListener("click", toggleMenu);
     }
 
-    window.addEventListener("scroll", updateNavbarState);
-    updateNavbarState();
+    if (navbar) {
+        window.addEventListener("scroll", updateNavbarState);
+        updateNavbarState();
+    }
 
+    /* =========================
+       PUBLIC PRODUCT FILTER
+    ========================= */
     const filterForm = document.getElementById("filterForm");
     const productContainer = document.getElementById("productContainer");
     const resetButtonContainer = document.getElementById("resetButtonContainer");
@@ -278,9 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    /* =========================
-       CUSTOM FILTER DROPDOWN
-    ========================= */
     const customFilterBoxes = document.querySelectorAll("[data-filter-box]");
 
     customFilterBoxes.forEach((box) => {

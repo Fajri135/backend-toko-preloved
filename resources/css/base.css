@@ -1,0 +1,116 @@
+:root {
+    --primary: #4A6B4A;
+    --primary-deep: #3A5311;
+    --primary-soft: #557C55;
+    --ink: #1A241A;
+    --muted: #687568;
+    --line: rgba(26, 36, 26, 0.10);
+    --line-strong: rgba(26, 36, 26, 0.16);
+    --surface: #FAFAFA;
+    --surface-soft: #F4F6F4;
+    --white: #FFFFFF;
+    --ivory: #FBFCF8;
+    --accent: #DDE8D8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--surface-soft);
+    color: var(--ink);
+    font-family: "Inter", "Plus Jakarta Sans", Arial, sans-serif;
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-primary-deep {
+    background-color: var(--primary-deep);
+}
+
+.bg-primary-soft {
+    background-color: var(--primary-soft);
+}
+
+.bg-light {
+    background-color: var(--surface-soft);
+}
+
+.bg-ivory {
+    background-color: var(--ivory);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-primary-deep {
+    color: var(--primary-deep);
+}
+
+.text-secondary {
+    color: var(--muted);
+}
+
+.text-accent {
+    color: var(--primary-deep);
+}
+
+.text-ink {
+    color: var(--ink);
+}
+
+.text-muted {
+    color: var(--muted);
+}
+
+.border-line {
+    border-color: var(--line);
+}
+
+.subtle-grid {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+    background-size: 64px 64px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    background: var(--primary-deep);
+    color: white;
+    border: 1px solid var(--primary-deep);
+    border-radius: 0.9rem;
+    padding: 0.95rem 1.35rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: 240ms ease;
+    box-shadow: 0 14px 30px rgba(58, 83, 17, 0.14);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
